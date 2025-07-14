@@ -15,11 +15,13 @@ def transform_data(source_df: pd.DataFrame, target_df: pd.DataFrame) -> pd.DataF
         # Conversion des dates
         source_df['datenaissance'] = pd.to_datetime(source_df['datenaissance'],
             errors='coerce')
+        # print("source_df['datenaissance']:", source_df['datenaissance'])
         target_df['snapshot_date'] = pd.to_datetime(target_df['snapshot_date'],
             errors='coerce')
+        # print("target_df['snapshot_date']:", target_df['snapshot_date'])
 
         # Fusion
-        merged_df = target_df.merge(
+        merged_df = target_df[['snapshot_date', 'id', 'age']].merge(
             source_df[['id', 'datenaissance']],
             on='id',
             how='left',
@@ -32,7 +34,8 @@ def transform_data(source_df: pd.DataFrame, target_df: pd.DataFrame) -> pd.DataF
         merged_df['age'] = merged_df.apply(
             lambda row: calculate_age(row['datenaissance'], row['snapshot_date']),
             axis=1
-        )
+        )  # Utilisation de Int64 pour gérer les NaN
+        print("head of merged_df:", merged_df.head())
 
         logger.info("Calcul des âges terminé avec succès.")
         return merged_df[['snapshot_date', 'id', 'datenaissance', 'age']]

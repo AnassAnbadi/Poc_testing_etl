@@ -1,0 +1,12 @@
+pandas==2.2.2
+SQLAlchemy==2.0.30
+psycopg2-binary
+pytest==8.2.1
+pytest-html
+pytest-assume
+pytest-xdist
+
+python-dotenv
+
+mkdocs==1.6.0 
+secure-smtplib
