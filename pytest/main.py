@@ -45,19 +45,16 @@ def run_tests():
 	logger.info("🧪 Lancement des tests automatiques avec Pytest...")
 	result = subprocess.run([
     "pytest",
-    "-vv",
-    "-n", "auto",
-    "--dist=loadscope",
-    "--maxfail=0",
+    "-n", "8",  # 8 workers (ajustez selon votre CPU)
+    "--dist=loadfile",  # Meilleure parallélisation
     "--disable-warnings",
     "--html=reports/test_report.html",
     "--self-contained-html",
-    "--capture=no",
-    "--verbose",
-    "--tb=short"
+    "--tb=native",  # Traces minimales
+    "--no-header",  # Supprime le header inutile
+    "--no-summary",  # Supprime le summary inutile
 ], capture_output=True, text=True)
 	print(result.stdout)
-	print("Exit code:", result.returncode)
 
 	if result.returncode != 0:
 		logger.error("❌ Des tests ont échoué !")

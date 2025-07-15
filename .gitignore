@@ -1,0 +1,28 @@
+# Fichier .gitignore pour un projet pytest
+
+# Environnement virtuel Python
+.venv/
+venv/
+
+# Fichiers de cache Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Cache pytest
+.pytest_cache/
+
+# Fichiers d'environnement
+.env
+.env.local
+.env.*.local
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Fichiers IDE
+.idea/
+.vscode/
+*.swp
+*.swo
