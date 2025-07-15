@@ -1,0 +1,140 @@
+{
+  "data_asset_type": null,
+  "expectation_suite_name": "target_results_suite",
+  "expectations": [
+    {
+      "expectation_type": "expect_table_row_count_to_be_between",
+      "kwargs": {
+        "min_value": 1,
+        "max_value": 10000
+      },
+      "meta": {
+        "notes": {
+          "format": "markdown",
+          "content": "Vérifier que la table contient un nombre raisonnable de lignes"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "snapshot_date"
+      },
+      "meta": {
+        "notes": {
+          "format": "markdown",
+          "content": "La colonne snapshot_date ne doit pas contenir de valeurs nulles"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "id"
+      },
+      "meta": {
+        "notes": {
+          "format": "markdown",
+          "content": "La colonne id ne doit pas contenir de valeurs nulles"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "datenaissance"
+      },
+      "meta": {
+        "notes": {
+          "format": "markdown",
+          "content": "La colonne datenaissance ne doit pas contenir de valeurs nulles"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "age"
+      },
+      "meta": {
+        "notes": {
+          "format": "markdown",
+          "content": "La colonne age ne doit pas contenir de valeurs nulles"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "age",
+        "min_value": 0,
+        "max_value": 150
+      },
+      "meta": {
+        "notes": {
+          "format": "markdown",
+          "content": "L'âge doit être entre 0 et 150 ans"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "id",
+        "type_": "INTEGER"
+      },
+      "meta": {
+        "notes": {
+          "format": "markdown",
+          "content": "La colonne id doit être de type INTEGER"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "age",
+        "type_": "INTEGER"
+      },
+      "meta": {
+        "notes": {
+          "format": "markdown",
+          "content": "La colonne age doit être de type INTEGER"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_compound_columns_to_be_unique",
+      "kwargs": {
+        "column_list": ["snapshot_date", "id"]
+      },
+      "meta": {
+        "notes": {
+          "format": "markdown",
+          "content": "La combinaison snapshot_date + id doit être unique"
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_match_regex",
+      "kwargs": {
+        "column": "snapshot_date",
+        "regex": "^\\d{4}-\\d{2}-\\d{2}$"
+      },
+      "meta": {
+        "notes": {
+          "format": "markdown",
+          "content": "La date snapshot doit respecter le format YYYY-MM-DD"
+        }
+      }
+    }
+  ],
+  "ge_cloud_id": null,
+  "meta": {
+    "great_expectations_version": "0.18.0",
+    "notes": {
+      "format": "markdown",
+      "content": "Suite d'expectations pour valider la table target après ETL"
+    }
+  }
+}
