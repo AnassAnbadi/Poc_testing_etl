@@ -5,7 +5,7 @@ Ce projet implémente un pipeline ETL complet avec PostgreSQL, comparant les app
 ## 🏗️ Architecture
 
 \`\`\`
-etl_project/
+Poc_testing_etl/
 ├── etl/                        # Code ETL métier
 │   ├── extract.py             # Extraction des données
 │   ├── transform.py           # Transformation et calcul d'âge
@@ -213,6 +213,3 @@ Ce projet démontre que :
 4. Push vers la branche
 5. Ouvrir une Pull Request
 
-## 📄 Licence
-
-Ce projet est sous licence MIT.
