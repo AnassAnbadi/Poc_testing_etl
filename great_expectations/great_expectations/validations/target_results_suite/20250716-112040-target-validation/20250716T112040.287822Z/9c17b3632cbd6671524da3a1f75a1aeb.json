@@ -1,0 +1,380 @@
+{
+  "evaluation_parameters": {},
+  "meta": {
+    "active_batch_definition": {
+      "batch_identifiers": {
+        "default_identifier_name": "target_table_latest"
+      },
+      "data_asset_name": "target_table",
+      "data_connector_name": "default_runtime_data_connector",
+      "datasource_name": "postgres_datasource"
+    },
+    "batch_markers": {
+      "ge_load_time": "20250716T112040.297525Z"
+    },
+    "batch_spec": {
+      "data_asset_name": "target_table",
+      "query": "SELECT * FROM target_table WHERE snapshot_date = (SELECT MAX(snapshot_date) FROM target_table)",
+      "temp_table_schema_name": null
+    },
+    "checkpoint_id": null,
+    "checkpoint_name": "target_results_checkpoint",
+    "expectation_suite_name": "target_results_suite",
+    "great_expectations_version": "0.18.9",
+    "run_id": {
+      "run_name": "20250716-112040-target-validation",
+      "run_time": "2025-07-16T12:20:40.287822+01:00"
+    },
+    "validation_id": null,
+    "validation_time": "20250716T112040.310192Z"
+  },
+  "results": [
+    {
+      "exception_info": {
+        "exception_message": "No provider found for column_values.dateutil_parseable.unexpected_count using SqlAlchemyExecutionEngine",
+        "exception_traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Admin\\Desktop\\Poc\\great_expectations\\.venv\\lib\\site-packages\\great_expectations\\expectations\\registry.py\", line 304, in get_metric_provider\n    return metric_definition[\"providers\"][type(execution_engine).__name__]\nKeyError: 'SqlAlchemyExecutionEngine'\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\Admin\\Desktop\\Poc\\great_expectations\\.venv\\lib\\site-packages\\great_expectations\\validator\\validator.py\", line 1137, in _generate_metric_dependency_subgraphs_for_each_expectation_configuration\n    graph=self._metrics_calculator.build_metric_dependency_graph(\n  File \"C:\\Users\\Admin\\Desktop\\Poc\\great_expectations\\.venv\\lib\\site-packages\\great_expectations\\validator\\metrics_calculator.py\", line 208, in build_metric_dependency_graph\n    graph.build_metric_dependency_graph(\n  File \"C:\\Users\\Admin\\Desktop\\Poc\\great_expectations\\.venv\\lib\\site-packages\\great_expectations\\validator\\validation_graph.py\", line 130, in build_metric_dependency_graph\n    ) = self.set_metric_configuration_default_kwargs_if_absent(\n  File \"C:\\Users\\Admin\\Desktop\\Poc\\great_expectations\\.venv\\lib\\site-packages\\great_expectations\\validator\\validation_graph.py\", line 174, in set_metric_configuration_default_kwargs_if_absent\n    metric_impl_klass, metric_provider = get_metric_provider(\n  File \"C:\\Users\\Admin\\Desktop\\Poc\\great_expectations\\.venv\\lib\\site-packages\\great_expectations\\expectations\\registry.py\", line 306, in get_metric_provider\n    raise gx_exceptions.MetricProviderError(\ngreat_expectations.exceptions.exceptions.MetricProviderError: No provider found for column_values.dateutil_parseable.unexpected_count using SqlAlchemyExecutionEngine\n",
+        "raised_exception": true
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_be_dateutil_parseable",
+        "kwargs": {
+          "batch_id": "9c17b3632cbd6671524da3a1f75a1aeb",
+          "column": "datenaissance"
+        },
+        "meta": {
+          "notes": {
+            "content": "La colonne datenaissance doit \u00c3\u00aatre parsable comme une date valide.",
+            "format": "markdown"
+          }
+        }
+      },
+      "meta": {},
+      "result": {},
+      "success": false
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_table_row_count_to_be_between",
+        "kwargs": {
+          "batch_id": "9c17b3632cbd6671524da3a1f75a1aeb",
+          "max_value": 10000,
+          "min_value": 1
+        },
+        "meta": {
+          "notes": {
+            "content": "V\u00c3\u00a9rifier que la table contient un nombre raisonnable de lignes",
+            "format": "markdown"
+          }
+        }
+      },
+      "meta": {},
+      "result": {
+        "observed_value": 511
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_compound_columns_to_be_unique",
+        "kwargs": {
+          "batch_id": "9c17b3632cbd6671524da3a1f75a1aeb",
+          "column_list": [
+            "snapshot_date",
+            "id"
+          ]
+        },
+        "meta": {
+          "notes": {
+            "content": "La combinaison snapshot_date + id doit \u00c3\u00aatre unique",
+            "format": "markdown"
+          }
+        }
+      },
+      "meta": {},
+      "result": {
+        "element_count": 511,
+        "missing_count": 0,
+        "missing_percent": 0.0,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_list": [],
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0,
+        "unexpected_percent_nonmissing": 0.0,
+        "unexpected_percent_total": 0.0
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_not_be_null",
+        "kwargs": {
+          "batch_id": "9c17b3632cbd6671524da3a1f75a1aeb",
+          "column": "snapshot_date"
+        },
+        "meta": {
+          "notes": {
+            "content": "La colonne snapshot_date ne doit pas contenir de valeurs nulles",
+            "format": "markdown"
+          }
+        }
+      },
+      "meta": {},
+      "result": {
+        "element_count": 511,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_list": [],
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_not_be_null",
+        "kwargs": {
+          "batch_id": "9c17b3632cbd6671524da3a1f75a1aeb",
+          "column": "id"
+        },
+        "meta": {
+          "notes": {
+            "content": "La colonne id ne doit pas contenir de valeurs nulles",
+            "format": "markdown"
+          }
+        }
+      },
+      "meta": {},
+      "result": {
+        "element_count": 511,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_list": [],
+        "unexpected_count": 0,
+        "unexpected_percent": 0.0
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_be_of_type",
+        "kwargs": {
+          "batch_id": "9c17b3632cbd6671524da3a1f75a1aeb",
+          "column": "id",
+          "type_": "INTEGER"
+        },
+        "meta": {
+          "notes": {
+            "content": "La colonne id doit \u00c3\u00aatre de type INTEGER",
+            "format": "markdown"
+          }
+        }
+      },
+      "meta": {},
+      "result": {
+        "observed_value": "INTEGER"
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_not_be_null",
+        "kwargs": {
+          "batch_id": "9c17b3632cbd6671524da3a1f75a1aeb",
+          "column": "datenaissance"
+        },
+        "meta": {
+          "notes": {
+            "content": "La colonne datenaissance ne doit pas contenir de valeurs nulles",
+            "format": "markdown"
+          }
+        }
+      },
+      "meta": {},
+      "result": {
+        "element_count": 511,
+        "partial_unexpected_counts": [
+          {
+            "count": 20,
+            "value": null
+          }
+        ],
+        "partial_unexpected_list": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "unexpected_count": 511,
+        "unexpected_percent": 100.0
+      },
+      "success": false
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_not_be_null",
+        "kwargs": {
+          "batch_id": "9c17b3632cbd6671524da3a1f75a1aeb",
+          "column": "age"
+        },
+        "meta": {
+          "notes": {
+            "content": "La colonne age ne doit pas contenir de valeurs nulles",
+            "format": "markdown"
+          }
+        }
+      },
+      "meta": {},
+      "result": {
+        "element_count": 511,
+        "partial_unexpected_counts": [
+          {
+            "count": 20,
+            "value": null
+          }
+        ],
+        "partial_unexpected_list": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "unexpected_count": 511,
+        "unexpected_percent": 100.0
+      },
+      "success": false
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_be_between",
+        "kwargs": {
+          "batch_id": "9c17b3632cbd6671524da3a1f75a1aeb",
+          "column": "age",
+          "max_value": 150,
+          "min_value": 0
+        },
+        "meta": {
+          "notes": {
+            "content": "L'\u00c3\u00a2ge doit \u00c3\u00aatre entre 0 et 150 ans",
+            "format": "markdown"
+          }
+        }
+      },
+      "meta": {},
+      "result": {
+        "element_count": 511,
+        "missing_count": 511,
+        "missing_percent": 100.0,
+        "partial_unexpected_counts": [],
+        "partial_unexpected_list": [],
+        "unexpected_count": 0,
+        "unexpected_percent": null,
+        "unexpected_percent_nonmissing": null,
+        "unexpected_percent_total": 0.0
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_be_of_type",
+        "kwargs": {
+          "batch_id": "9c17b3632cbd6671524da3a1f75a1aeb",
+          "column": "age",
+          "type_": "INTEGER"
+        },
+        "meta": {
+          "notes": {
+            "content": "La colonne age doit \u00c3\u00aatre de type INTEGER",
+            "format": "markdown"
+          }
+        }
+      },
+      "meta": {},
+      "result": {
+        "observed_value": "INTEGER"
+      },
+      "success": true
+    }
+  ],
+  "statistics": {
+    "evaluated_expectations": 10,
+    "success_percent": 70.0,
+    "successful_expectations": 7,
+    "unsuccessful_expectations": 3
+  },
+  "success": false
+}

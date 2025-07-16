@@ -32,17 +32,17 @@ class ETLPipeline:
 		self.ge_runner = GreatExpectationsRunner()
 		self.snapshot_date = snapshot_date or datetime.now().date()
 		
-	# def setup_database(self):
-	# 	"""Initialise la base de données avec les tables et données d'exemple"""
-	# 	logger.info("🔧 Configuration de la base de données...")
-	# 	try:
-	# 		self.loader.create_tables_if_not_exist()
-	# 		self.loader.insert_sample_data()
-	# 		logger.info("✅ Base de données configurée avec succès")
-	# 		return True
-	# 	except Exception as e:
-	# 		logger.error(f"❌ Erreur lors de la configuration de la base de données: {e}")
-	# 		return False
+	def setup_database(self):
+		"""Initialise la base de données avec les tables et données d'exemple"""
+		logger.info("🔧 Configuration de la base de données...")
+		try:
+			self.loader.create_tables_if_not_exist()
+			self.loader.insert_sample_data()
+			logger.info("✅ Base de données configurée avec succès")
+			return True
+		except Exception as e:
+			logger.error(f"❌ Erreur lors de la configuration de la base de données: {e}")
+			return False
 	
 	def run_etl(self):
 		"""Exécute le pipeline ETL complet"""

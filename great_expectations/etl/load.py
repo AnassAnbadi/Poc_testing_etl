@@ -43,10 +43,10 @@ class DataLoader:
     def create_tables_if_not_exist(self):
         """Crée les tables si elles n'existent pas"""
         create_source_table = f"""
-        CREATE TABLE IF NOT EXISTS {settings.etl.target_results_for_ge} (
+        CREATE TABLE IF NOT EXISTS {settings.etl.source_table} (
             id SERIAL PRIMARY KEY,
             datenaissance DATE NOT NULL
-        );target_table
+        );
         """
         
         create_target_table = f"""
@@ -61,9 +61,8 @@ class DataLoader:
         
         try:
             with DatabaseConnection() as conn:
-                cursor = conn.cursor()
-                cursor.execute(create_source_table)
-                cursor.execute(create_target_table)
+                conn.execute(create_source_table)
+                conn.execute(create_target_table)
                 logger.info("Tables créées avec succès")
         except Exception as e:
             logger.error(f"Erreur lors de la création des tables: {e}")
